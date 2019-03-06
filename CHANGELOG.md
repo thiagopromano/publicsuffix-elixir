@@ -2,9 +2,10 @@
 
 * Update IDNA to support version 6.0.0
   * Also bump dev dependecies for earmark and ex_doc
+* Fix warnings up to Elixir v1.8.0
 
 Breaking:
-* Raise minimum Elixir version to 1.4
+* Raise minimum Elixir version to 1.5
 
 ### 0.6.0 / 2018-02-28
 [Full Changelog](https://github.com/seomoz/publicsuffix-elixir/compare/v0.5.0...v0.4.0)
