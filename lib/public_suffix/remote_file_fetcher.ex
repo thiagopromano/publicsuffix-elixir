@@ -6,15 +6,15 @@ defmodule PublicSuffix.RemoteFileFetcher do
     # this is only used at compile time or in one-off mix tasks --
     # so at deployed runtime, this is not used and these applications
     # are not needed.
-    :inets.start
-    :ssl.start
+    {:ok, _} = Application.ensure_all_started(:inets)
+    {:ok, _} = Application.ensure_all_started(:ssl)
 
     url
     |> to_charlist()
-    |> :httpc.request
+    |> :httpc.request()
     |> case do
-         {:ok, {{_, 200, _}, _headers, body}} -> {:ok, to_string(body)}
-         otherwise -> {:error, otherwise}
-       end
+      {:ok, {{_, 200, _}, _headers, body}} -> {:ok, :erlang.iolist_to_binary(body)}
+      otherwise -> {:error, otherwise}
+    end
   end
 end
