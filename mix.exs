@@ -20,6 +20,8 @@ defmodule PublicSuffix.Mixfile do
       # rules file. So it is not needed at runtime.
       applications: [
         :logger,
+        :ssl,
+        :inets
       ]
     ]
   end
